@@ -1,26 +1,79 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F4EFE6;
+  --foreground: #355E58;
+  --accent: #D8C7B2;
+  --muted: rgba(53, 94, 88, 0.45);
+  --border: rgba(53, 94, 88, 0.14);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(216, 199, 178, 0.45);
+}
+
+/* Nav hover states — pure CSS, no JS handlers needed */
+.nav-link {
+  color: var(--muted);
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+.nav-link:hover {
+  color: var(--foreground);
+}
+
+/* Service list hover — on light bg */
+.service-link {
+  color: var(--foreground);
+  transition: color 0.18s ease;
+  text-decoration: none;
+}
+.service-link:hover {
+  color: var(--accent);
+}
+
+/* Service list hover — on dark green bg */
+.service-link-inv {
+  color: #F4EFE6;
+  transition: color 0.18s ease;
+  text-decoration: none;
+}
+.service-link-inv:hover {
+  color: #D8C7B2;
+}
+
+/* Service pill — outlined tag on dark green bg */
+.service-pill {
+  background: transparent;
+}
+.service-pill:hover {
+  background: rgba(244, 239, 230, 0.12);
+  color: #D8C7B2;
+}
+.service-pill:hover svg {
+  opacity: 1;
+  transform: translate(1px, -1px);
+}
+
