@@ -78,3 +78,17 @@ body {
   transform: translate(1px, -1px);
 }
 
+/* Contact form submit button */
+.contact-submit {
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.contact-submit:hover {
+  background: #26473f !important;
+  transform: translateY(-1px);
+}
+
+/* Contact form inputs */
+.contact-field:focus {
+  border-color: var(--foreground) !important;
+}
+

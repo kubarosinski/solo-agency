@@ -10,7 +10,7 @@ export default function Statement() {
           className="text-[10px] tracking-[0.24em] uppercase font-medium"
           style={{ color: "rgba(244, 239, 230, 0.5)" }}
         >
-          Our Belief
+          W co wierzymy
         </span>
         <div style={{ width: "40px", height: "1px", background: "rgba(244, 239, 230, 0.2)" }} />
       </div>
@@ -26,7 +26,7 @@ export default function Statement() {
               letterSpacing: "-0.025em",
             }}
           >
-            Exceptional work is never accidental. It&apos;s the product of ruthless clarity, fearless taste, and the discipline to subtract everything that doesn&apos;t matter.
+            Wybitna praca nigdy nie jest dziełem przypadku. To efekt bezwzględnej jasności, odważnego gustu i dyscypliny, by odrzucić wszystko, co nie ma znaczenia.
           </p>
         </div>
 

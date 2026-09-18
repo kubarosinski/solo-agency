@@ -1,27 +1,27 @@
 const steps = [
   {
     number: "01",
-    title: "Discovery",
+    title: "Odkrycie",
     description:
-      "We dive deep into your world — your users, your market, your competitors — to surface the insight that changes everything.",
+      "Zagłębiamy się w Twój świat — użytkowników, rynek, konkurencję — by odkryć wgląd, który zmienia wszystko.",
   },
   {
     number: "02",
-    title: "Strategy",
+    title: "Strategia",
     description:
-      "Every pixel and word is intentional. We map the full experience before a single element is designed.",
+      "Każdy piksel i każde słowo mają znaczenie. Mapujemy całe doświadczenie, zanim zaprojektujemy pierwszy element.",
   },
   {
     number: "03",
-    title: "Craft",
+    title: "Rzemiosło",
     description:
-      "With a clear north star, we execute with obsessive precision — refining until nothing can be removed without loss.",
+      "Mając jasny cel, działamy z obsesyjną precyzją — dopracowujemy wszystko, aż nie da się już nic odjąć bez straty.",
   },
   {
     number: "04",
-    title: "Launch",
+    title: "Wdrożenie",
     description:
-      "We ship with confidence and stay close through the critical window — measuring, learning, and iterating fast.",
+      "Wdrażamy z pewnością i zostajemy blisko w kluczowym okresie — mierzymy, uczymy się i szybko iterujemy.",
   },
 ];
 
@@ -34,13 +34,13 @@ export default function Process() {
           className="text-[10px] tracking-[0.24em] uppercase font-medium"
           style={{ color: "var(--muted)" }}
         >
-          How We Work
+          Jak pracujemy
         </span>
         <span
           className="text-[10px] tracking-[0.16em] uppercase font-medium"
           style={{ color: "var(--muted)" }}
         >
-          {steps.length} Steps
+          {steps.length} kroki
         </span>
       </div>
 

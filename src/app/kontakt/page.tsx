@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Header from "../components/Header";
+import ContactForm from "../components/ContactForm";
 
 export const metadata: Metadata = {
   title: "Kontakt — Solo Agency",
@@ -35,73 +36,81 @@ export default function KontaktPage() {
           </h1>
         </section>
 
-        {/* Dane kontaktowe */}
-        <section
-          className="w-full py-24 md:py-32 px-6 md:px-14"
-          style={{ borderBottom: "1px solid var(--border)" }}
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
-            <div>
-              <p
-                className="text-[10px] tracking-[0.24em] uppercase font-medium mb-8"
-                style={{ color: "var(--muted)" }}
-              >
-                E-mail
-              </p>
-              <a
-                href="mailto:hello@soloagency.pl"
-                className="font-semibold nav-link"
-                style={{
-                  fontSize: "clamp(1.2rem, 2.5vw, 2.2rem)",
-                  letterSpacing: "-0.015em",
-                }}
-              >
-                hello@soloagency.pl
-              </a>
+        {/* Kontakt + formularz — panel dzielony */}
+        <section className="w-full py-24 md:py-32 px-6 md:px-14">
+          <div
+            className="grid grid-cols-1 md:grid-cols-2"
+            style={{ background: "var(--background)", boxShadow: "0 1px 0 var(--border)" }}
+          >
+            {/* Lewa kolumna — dane kontaktowe */}
+            <div
+              className="flex flex-col justify-between gap-16 p-10 md:p-14"
+              style={{ background: "#355E58", color: "#F4EFE6" }}
+            >
+              <div className="flex flex-col gap-6">
+                <span
+                  className="text-[11px] tracking-[0.22em] uppercase font-medium"
+                  style={{ color: "rgba(244,239,230,0.55)" }}
+                >
+                  Napisz do nas
+                </span>
+                <h2
+                  className="font-bold leading-[1.06]"
+                  style={{ fontSize: "clamp(1.9rem, 3.4vw, 2.75rem)", letterSpacing: "-0.02em" }}
+                >
+                  Każdy wielki projekt zaczyna się od rozmowy.
+                </h2>
+                <p
+                  className="leading-relaxed"
+                  style={{ maxWidth: "300px", color: "rgba(244,239,230,0.75)" }}
+                >
+                  Opowiedz nam o swoim projekcie, a my wrócimy do Ciebie w ciągu 24 godzin z konkretnymi propozycjami.
+                </p>
+              </div>
+              <div className="flex flex-col gap-7">
+                <div className="flex flex-col gap-2">
+                  <span
+                    className="text-[11px] tracking-[0.22em] uppercase font-medium"
+                    style={{ color: "rgba(244,239,230,0.55)" }}
+                  >
+                    E-mail
+                  </span>
+                  <a
+                    href="mailto:hello@soloagency.pl"
+                    className="font-semibold self-start"
+                    style={{
+                      fontSize: "1.3rem",
+                      color: "#F4EFE6",
+                      borderBottom: "1px solid rgba(244,239,230,.35)",
+                      paddingBottom: "3px",
+                    }}
+                  >
+                    hello@soloagency.pl
+                  </a>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <span
+                    className="text-[11px] tracking-[0.22em] uppercase font-medium"
+                    style={{ color: "rgba(244,239,230,0.55)" }}
+                  >
+                    Telefon
+                  </span>
+                  <a
+                    href="tel:+48000000000"
+                    className="font-semibold"
+                    style={{ fontSize: "1.3rem", color: "#F4EFE6" }}
+                  >
+                    +48 000 000 000
+                  </a>
+                </div>
+              </div>
             </div>
-            <div>
-              <p
-                className="text-[10px] tracking-[0.24em] uppercase font-medium mb-8"
-                style={{ color: "var(--muted)" }}
-              >
-                Telefon
-              </p>
-              <a
-                href="tel:+48000000000"
-                className="font-semibold nav-link"
-                style={{
-                  fontSize: "clamp(1.2rem, 2.5vw, 2.2rem)",
-                  letterSpacing: "-0.015em",
-                }}
-              >
-                +48 000 000 000
-              </a>
+
+            {/* Prawa kolumna — formularz */}
+            <div className="p-10 md:p-14" style={{ border: "1px solid var(--border)", borderLeft: "none" }}>
+              <ContactForm />
             </div>
           </div>
-        </section>
-
-        {/* CTA */}
-        <section
-          className="w-full py-24 md:py-32 px-6 md:px-14"
-          style={{ background: "#355E58" }}
-        >
-          <p
-            className="font-semibold leading-tight mb-16"
-            style={{
-              fontSize: "clamp(2rem, 5vw, 5rem)",
-              color: "#F4EFE6",
-              letterSpacing: "-0.025em",
-              maxWidth: "70%",
-            }}
-          >
-            Każdy wielki projekt zaczyna się od rozmowy.
-          </p>
-          <p
-            className="text-sm leading-relaxed"
-            style={{ color: "rgba(244, 239, 230, 0.6)", maxWidth: "480px" }}
-          >
-            Opowiedz nam o swoim projekcie, a my wrócimy do Ciebie w ciągu 24 godzin z konkretnymi propozycjami.
-          </p>
         </section>
 
       </main>

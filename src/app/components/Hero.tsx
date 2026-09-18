@@ -14,9 +14,9 @@ export default function Hero() {
             letterSpacing: "-0.03em",
           }}
         >
-          <span className="block">We shape</span>
-          <span className="block">ideas into</span>
-          <span className="block">reality.</span>
+          <span className="block">Zmieniamy</span>
+          <span className="block">pomysły w</span>
+          <span className="block">rzeczywistość.</span>
         </h1>
       </div>
 
@@ -26,18 +26,18 @@ export default function Hero() {
         style={{ color: "var(--muted)" }}
       >
         <p className="text-sm leading-relaxed tracking-wide">
-          A boutique creative agency building
+          Butikowa agencja kreatywna, która tworzy
           <br />
-          bold digital experiences for
+          odważne doświadczenia cyfrowe dla
           <br />
-          ambitious brands.
+          ambitnych marek.
         </p>
         <a
           href="#"
           className="inline-flex items-center gap-2 mt-5 text-xs font-medium tracking-[0.16em] uppercase transition-opacity hover:opacity-100"
           style={{ color: "var(--accent)", opacity: 0.8 }}
         >
-          See our work
+          Zobacz nasze projekty
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>

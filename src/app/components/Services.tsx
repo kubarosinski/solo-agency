@@ -58,7 +58,7 @@ export default function Services() {
           className="text-[10px] tracking-[0.24em] uppercase font-medium"
           style={{ color: "rgba(244, 239, 230, 0.5)" }}
         >
-          What We Do
+          Czym się zajmujemy
         </span>
         <div style={{ width: "40px", height: "1px", background: "rgba(244, 239, 230, 0.2)" }} />
       </div>

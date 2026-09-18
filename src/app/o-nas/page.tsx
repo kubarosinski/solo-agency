@@ -8,6 +8,26 @@ export const metadata: Metadata = {
     "Łączymy strategię, kreację i technologię. Pracujemy z markami, które mają ambicje i cenią jakość ponad ilość.",
 };
 
+const team = [
+  {
+    src: "/jakub.jpg",
+    sizes: "320px",
+    name: "Jakub Rosiński",
+    role: "SEO & web development",
+    email: "jakub@soloagency.pl",
+    bio: "AI zmienia sposób wyszukiwania, ale nie zasady gry. Jako inżynier i specjalista SEO buduję strony, które wygrywają w Google i w odpowiedziach AI. Łączę pracę nad kodem i nad treścią, bo jedno bez drugiego nie działa — odpowiadam za architekturę serwisu, szybkość i za to, żeby każda podstrona miała jasny powód istnienia.",
+  },
+  {
+    src: "/krzysztof.jpg",
+    // proporcje 0.86 przy kadrze 4:5 (0.8) - po dopasowaniu do wysokosci ma ok. 346 px szerokosci
+    sizes: "350px",
+    name: "Krzysztof Weichert",
+    role: "SEO & widoczność w AI",
+    email: "krzysztof@soloagency.pl",
+    bio: "Informatyk z wykształcenia, SEO z wyboru. Sprawdzam, jak Google i modele AI wybierają źródła, i wdrażam zmiany, dzięki którym wybierają Ciebie. Zaczynam od danych — stanu technicznego strony, realnych zapytań i tego, kto dziś na nie odpowiada. Potem układam plan, który da się wdrożyć, a nie listę rekomendacji na sto stron.",
+  },
+];
+
 const values = [
   {
     num: "01",
@@ -64,6 +84,18 @@ export default function ONasPage() {
               które mają ambicje i cenią jakość ponad ilość. Każdy projekt
               traktujemy jak nasz własny.
             </p>
+            <div className="flex md:justify-end items-start">
+              <a
+                href="/kontakt"
+                className="inline-flex items-center gap-3 text-xs font-medium tracking-[0.16em] uppercase"
+                style={{ color: "#D8C7B2" }}
+              >
+                Poznajmy się
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </a>
+            </div>
           </div>
         </section>
 
@@ -98,38 +130,72 @@ export default function ONasPage() {
           className="w-full py-24 md:py-32 px-6 md:px-14"
           style={{ borderBottom: "1px solid var(--border)" }}
         >
-          <p
-            className="text-[10px] tracking-[0.24em] uppercase font-medium mb-16"
-            style={{ color: "var(--muted)" }}
-          >
-            Zespół
-          </p>
-          <div className="flex flex-row gap-8">
-            {[
-              { src: "/jakub.jpg", name: "Jakub Rosiński" },
-              { src: "/krzysztof.jpg", name: "Krzysztof Weichert" },
-            ].map((person) => (
-              <div key={person.name} className="flex flex-col gap-4">
-                <div
-                  className="relative overflow-hidden"
-                  style={{ width: "200px", height: "240px" }}
-                >
-                  <Image
-                    src={person.src}
-                    alt={person.name}
-                    fill
-                    sizes="200px"
-                    style={{ objectFit: "cover", objectPosition: "top" }}
-                  />
+          <div className="flex flex-col items-center text-center gap-14">
+            <p
+              className="text-[10px] tracking-[0.24em] uppercase font-medium"
+              style={{ color: "var(--muted)" }}
+            >
+              Zespół
+            </p>
+            <h2
+              className="font-semibold leading-tight max-w-xl mx-auto"
+              style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.4rem)", color: "var(--foreground)", letterSpacing: "-0.015em" }}
+            >
+              Dwie osoby, które prowadzą projekty od początku do końca.
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 max-w-3xl mx-auto">
+              {team.map((person) => (
+                <div key={person.name} className="flex flex-col items-center text-center gap-6">
+                  <div
+                    className="relative w-full overflow-hidden mx-auto"
+                    style={{ aspectRatio: "4 / 5", maxWidth: "320px", background: "var(--border)" }}
+                  >
+                    <Image
+                      src={person.src}
+                      alt={person.name}
+                      fill
+                      sizes={person.sizes}
+                      quality={90}
+                      style={{ objectFit: "cover", objectPosition: "top" }}
+                    />
+                  </div>
+                  <div className="flex flex-col items-center gap-3">
+                    <div style={{ width: "40px", height: "1px", background: "var(--border)" }} />
+                    <span
+                      className="text-[11px] tracking-[0.18em] uppercase font-medium"
+                      style={{ color: "var(--foreground)", opacity: 0.75 }}
+                    >
+                      {person.role}
+                    </span>
+                    <h3
+                      className="font-semibold"
+                      style={{ fontSize: "1.4rem", color: "var(--foreground)", letterSpacing: "-0.01em" }}
+                    >
+                      {person.name}
+                    </h3>
+                    <p className="leading-relaxed" style={{ fontSize: "0.95rem", color: "var(--muted)" }}>
+                      {person.bio}
+                    </p>
+                    <div className="flex flex-wrap items-center justify-center gap-4 mt-2">
+                      <a
+                        href={`mailto:${person.email}`}
+                        className="text-xs font-medium"
+                        style={{ letterSpacing: "0.04em", color: "var(--foreground)", borderBottom: "1px solid var(--border)", paddingBottom: "3px" }}
+                      >
+                        {person.email}
+                      </a>
+                      <a
+                        href="#"
+                        className="text-[11px] font-medium uppercase"
+                        style={{ letterSpacing: "0.14em", color: "var(--foreground)", borderBottom: "1px solid var(--border)", paddingBottom: "3px" }}
+                      >
+                        LinkedIn
+                      </a>
+                    </div>
+                  </div>
                 </div>
-                <span
-                  className="font-semibold"
-                  style={{ fontSize: "0.9rem", color: "var(--foreground)", letterSpacing: "-0.01em" }}
-                >
-                  {person.name}
-                </span>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </section>
 
