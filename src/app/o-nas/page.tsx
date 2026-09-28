@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Header from "../components/Header";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "O nas — Solo Agency",
@@ -204,19 +205,19 @@ export default function ONasPage() {
           className="w-full py-24 md:py-32 px-6 md:px-14"
           style={{ borderBottom: "1px solid rgba(244,239,230,0.12)", background: "#355E58" }}
         >
-          <p className="text-[10px] tracking-[0.24em] uppercase font-medium mb-16" style={{ color: "rgba(244,239,230,0.45)" }}>
+          <p className="text-[10px] tracking-[0.24em] uppercase font-medium mb-16" style={{ color: "rgba(244, 239, 230, 0.78)" }}>
             Nasze wartości
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-16">
             {values.map((val) => (
               <div key={val.num} className="flex flex-col gap-5">
-                <span className="font-semibold tabular-nums" style={{ fontSize: "0.7rem", color: "rgba(244,239,230,0.45)", letterSpacing: "0.1em" }}>
+                <span className="font-semibold tabular-nums" style={{ fontSize: "0.7rem", color: "rgba(244, 239, 230, 0.78)", letterSpacing: "0.1em" }}>
                   {val.num}
                 </span>
                 <h2 className="font-semibold leading-tight" style={{ fontSize: "clamp(1.25rem, 2.2vw, 1.75rem)", color: "#F4EFE6", letterSpacing: "-0.02em" }}>
                   {val.title}
                 </h2>
-                <p className="leading-relaxed" style={{ fontSize: "clamp(0.9rem, 1.2vw, 1.05rem)", color: "rgba(244,239,230,0.6)" }}>
+                <p className="leading-relaxed" style={{ fontSize: "clamp(0.9rem, 1.2vw, 1.05rem)", color: "rgba(244, 239, 230, 0.78)" }}>
                   {val.body}
                 </p>
               </div>
@@ -282,9 +283,9 @@ export default function ONasPage() {
         >
           © 2026 Solo Agency
         </span>
-        <a href="/" className="text-[10px] tracking-[0.18em] uppercase font-medium nav-link">
+        <Link href="/" className="text-[10px] tracking-[0.18em] uppercase font-medium nav-link">
           Strona główna
-        </a>
+        </Link>
       </footer>
     </>
   );

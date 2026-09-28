@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Header from "../components/Header";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "SEO — Solo Agency",
@@ -147,7 +148,7 @@ export default function SeoPage() {
                 style={{
                   fontSize: "0.75rem",
                   letterSpacing: "0.08em",
-                  color: i % 2 === 0 ? "rgba(244,239,230,0.45)" : "var(--muted)",
+                  color: i % 2 === 0 ? "rgba(244, 239, 230, 0.78)" : "var(--muted)",
                 }}
               >
                 {svc.num}
@@ -167,7 +168,7 @@ export default function SeoPage() {
                   className="font-medium"
                   style={{
                     fontSize: "clamp(0.95rem, 1.3vw, 1.1rem)",
-                    color: i % 2 === 0 ? "rgba(244,239,230,0.75)" : "var(--foreground)",
+                    color: i % 2 === 0 ? "rgba(244, 239, 230, 0.85)" : "var(--foreground)",
                   }}
                 >
                   {svc.lead}
@@ -179,7 +180,7 @@ export default function SeoPage() {
                       className="leading-relaxed"
                       style={{
                         fontSize: "clamp(0.9rem, 1.2vw, 1.05rem)",
-                        color: i % 2 === 0 ? "rgba(244,239,230,0.6)" : "var(--muted)",
+                        color: i % 2 === 0 ? "rgba(244, 239, 230, 0.78)" : "var(--muted)",
                       }}
                     >
                       {para}
@@ -237,12 +238,12 @@ export default function SeoPage() {
         >
           © 2026 Solo Agency
         </span>
-        <a
+        <Link
           href="/"
           className="text-[10px] tracking-[0.18em] uppercase font-medium nav-link"
         >
           Strona główna
-        </a>
+        </Link>
       </footer>
     </>
   );

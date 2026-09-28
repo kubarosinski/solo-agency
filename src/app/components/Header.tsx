@@ -1,4 +1,5 @@
 import Nav from "./Nav";
+import Link from "next/link";
 
 export default function Header() {
   return (
@@ -10,7 +11,7 @@ export default function Header() {
       }}
     >
       {/* Logo — typographic, serif, two-weight */}
-      <a
+      <Link
         href="/"
         aria-label="Home"
         className="flex items-baseline gap-0 leading-none"
@@ -34,7 +35,7 @@ export default function Header() {
         >
           Agency
         </span>
-      </a>
+      </Link>
 
       <Nav />
     </header>

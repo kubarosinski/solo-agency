@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import Link from "next/link";
 
 const subItems = [
   { label: "SEO",             href: "/seo" },
@@ -14,7 +15,11 @@ const subItems = [
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [subOpen, setSubOpen] = useState(false);
   const ref = useRef<HTMLLIElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function handleClick(e: MouseEvent) {
@@ -26,19 +31,49 @@ export default function Nav() {
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
 
+  // Esc zamyka rozwinięte menu; panel mobilny blokuje przewijanie tła
+  useEffect(() => {
+    function handleKey(e: KeyboardEvent) {
+      if (e.key !== "Escape") return;
+      setOpen(false);
+      if (menuOpen) {
+        setMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    }
+    document.addEventListener("keydown", handleKey);
+    return () => document.removeEventListener("keydown", handleKey);
+  }, [menuOpen]);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    panelRef.current?.querySelector("a")?.focus();
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [menuOpen]);
+
+  function closeMenu() {
+    setMenuOpen(false);
+    setSubOpen(false);
+  }
+
   return (
     <nav aria-label="Main navigation">
-      <ul className="flex items-center gap-8 md:gap-10 list-none m-0 p-0">
+      {/* ── Desktop ── */}
+      <ul className="hidden md:flex items-center gap-8 md:gap-10 list-none m-0 p-0">
 
         {/* O nas */}
         <li>
-          <a
+          <Link
             href="/o-nas"
             className="nav-link text-xs font-medium uppercase"
             style={{ letterSpacing: "0.15em" }}
           >
             O nas
-          </a>
+          </Link>
         </li>
 
         {/* Kompetencje z dropdown */}
@@ -90,7 +125,7 @@ export default function Nav() {
                     borderTop: i === 0 ? "none" : "1px solid rgba(53, 94, 88, 0.1)",
                   }}
                 >
-                  <a
+                  <Link
                     href={item.href}
                     className="nav-link flex items-center justify-between px-6 py-4 text-xs font-medium uppercase group"
                     style={{ letterSpacing: "0.13em" }}
@@ -113,7 +148,7 @@ export default function Nav() {
                         strokeLinejoin="round"
                       />
                     </svg>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -122,17 +157,118 @@ export default function Nav() {
 
         {/* Kontakt */}
         <li>
-          <a
+          <Link
             href="/kontakt"
             className="nav-link text-xs font-medium uppercase"
             style={{ letterSpacing: "0.15em" }}
           >
             Kontakt
-          </a>
+          </Link>
         </li>
 
       </ul>
+
+      {/* ── Mobile: przycisk + panel ── */}
+      <button
+        ref={menuButtonRef}
+        type="button"
+        onClick={() => (menuOpen ? closeMenu() : setMenuOpen(true))}
+        aria-expanded={menuOpen}
+        aria-controls="mobile-menu"
+        aria-label={menuOpen ? "Zamknij menu" : "Otwórz menu"}
+        className="md:hidden flex flex-col items-end justify-center gap-[5px] bg-transparent border-none p-0 -mr-2 pr-2"
+        style={{ width: "44px", height: "44px", color: "var(--foreground)" }}
+      >
+        <span
+          aria-hidden="true"
+          className="block h-px"
+          style={{
+            width: "22px",
+            background: "currentColor",
+            transition: "transform 0.25s ease",
+            transform: menuOpen ? "translateY(3px) rotate(45deg)" : "none",
+          }}
+        />
+        <span
+          aria-hidden="true"
+          className="block h-px"
+          style={{
+            width: "22px",
+            background: "currentColor",
+            transition: "transform 0.25s ease",
+            transform: menuOpen ? "translateY(-3px) rotate(-45deg)" : "none",
+          }}
+        />
+      </button>
+
+      <div
+        id="mobile-menu"
+        ref={panelRef}
+        className={`${menuOpen ? "flex" : "hidden"} md:hidden flex-col absolute left-0 right-0 top-full max-h-[80vh] overflow-y-auto`}
+        style={{
+          background: "var(--background)",
+          borderTop: "1px solid var(--border)",
+          boxShadow: "0 16px 48px rgba(53, 94, 88, 0.13)",
+        }}
+      >
+        <Link
+          href="/o-nas"
+          onClick={closeMenu}
+          className="nav-link flex items-center px-8 text-xs font-medium uppercase"
+          style={{ letterSpacing: "0.15em", minHeight: "56px", borderBottom: "1px solid var(--border)" }}
+        >
+          O nas
+        </Link>
+
+        <button
+          type="button"
+          onClick={() => setSubOpen((v) => !v)}
+          aria-expanded={subOpen}
+          aria-controls="mobile-submenu"
+          className="nav-link flex items-center justify-between w-full px-8 text-xs font-medium uppercase bg-transparent border-none"
+          style={{ letterSpacing: "0.15em", minHeight: "56px", borderBottom: "1px solid var(--border)", font: "inherit" }}
+        >
+          Kompetencje
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 10 10"
+            fill="none"
+            aria-hidden="true"
+            style={{ transition: "transform 0.25s ease", transform: subOpen ? "rotate(180deg)" : "none" }}
+          >
+            <path d="M2 3.5l3 3 3-3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
+
+        <ul
+          id="mobile-submenu"
+          className={`${subOpen ? "flex" : "hidden"} flex-col list-none m-0 p-0`}
+          style={{ background: "#ECE9E0" }}
+        >
+          {subItems.map((item) => (
+            <li key={item.href}>
+              <Link
+                href={item.href}
+                onClick={closeMenu}
+                className="nav-link flex items-center pl-12 pr-8 text-xs font-medium uppercase"
+                style={{ letterSpacing: "0.13em", minHeight: "52px", borderBottom: "1px solid var(--border)" }}
+              >
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        <Link
+          href="/kontakt"
+          onClick={closeMenu}
+          className="nav-link flex items-center px-8 text-xs font-medium uppercase"
+          style={{ letterSpacing: "0.15em", minHeight: "56px" }}
+        >
+          Kontakt
+        </Link>
+      </div>
     </nav>
   );
 }
-

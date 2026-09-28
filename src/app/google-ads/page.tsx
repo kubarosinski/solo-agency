@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Header from "../components/Header";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Google Ads — Solo Agency",
@@ -146,7 +147,7 @@ export default function GoogleAdsPage() {
         >
           <p
             className="text-[10px] tracking-[0.24em] uppercase font-medium mb-16"
-            style={{ color: "rgba(244,239,230,0.45)" }}
+            style={{ color: "rgba(244, 239, 230, 0.78)" }}
           >
             Jak to robimy
           </p>
@@ -155,7 +156,7 @@ export default function GoogleAdsPage() {
               <div key={adv.num} className="flex flex-col gap-5">
                 <span
                   className="font-semibold tabular-nums"
-                  style={{ fontSize: "0.7rem", color: "rgba(244,239,230,0.45)", letterSpacing: "0.1em" }}
+                  style={{ fontSize: "0.7rem", color: "rgba(244, 239, 230, 0.78)", letterSpacing: "0.1em" }}
                 >
                   {adv.num}
                 </span>
@@ -171,7 +172,7 @@ export default function GoogleAdsPage() {
                 </h2>
                 <p
                   className="leading-relaxed"
-                  style={{ fontSize: "clamp(0.9rem, 1.2vw, 1.05rem)", color: "rgba(244,239,230,0.6)" }}
+                  style={{ fontSize: "clamp(0.9rem, 1.2vw, 1.05rem)", color: "rgba(244, 239, 230, 0.78)" }}
                 >
                   {adv.body}
                 </p>
@@ -294,12 +295,12 @@ export default function GoogleAdsPage() {
         >
           © 2026 Solo Agency
         </span>
-        <a
+        <Link
           href="/"
           className="text-[10px] tracking-[0.18em] uppercase font-medium nav-link"
         >
           Strona główna
-        </a>
+        </Link>
       </footer>
     </>
   );

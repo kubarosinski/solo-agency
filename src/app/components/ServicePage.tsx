@@ -1,4 +1,5 @@
 import Header from "./Header";
+import Link from "next/link";
 
 interface ServicePageProps {
   title: string;
@@ -138,12 +139,12 @@ export default function ServicePage({ title, subtitle, description, points }: Se
         >
           © 2026 Solo Agency
         </span>
-        <a
+        <Link
           href="/"
           className="text-[10px] tracking-[0.18em] uppercase font-medium nav-link"
         >
           Strona główna
-        </a>
+        </Link>
       </footer>
     </>
   );

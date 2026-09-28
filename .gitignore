@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local tooling / source content (not pushed)
+.claude/
+SoloAgency_tresci_podstron.docx

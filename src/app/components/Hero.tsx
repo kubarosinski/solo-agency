@@ -1,7 +1,7 @@
 export default function Hero() {
   return (
     <section
-      className="relative min-h-screen flex flex-col justify-end overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-end overflow-hidden pt-32 md:pt-36"
       style={{ paddingBottom: "7vw" }}
     >
       {/* Massive headline */}
@@ -9,7 +9,7 @@ export default function Hero() {
         <h1
           className="font-semibold leading-[0.88] tracking-tight"
           style={{
-            fontSize: "clamp(4.2rem, 13.5vw, 14rem)",
+            fontSize: "clamp(2.75rem, 13vw, 14rem)",
             color: "var(--foreground)",
             letterSpacing: "-0.03em",
           }}
@@ -20,22 +20,21 @@ export default function Hero() {
         </h1>
       </div>
 
-      {/* Subheadline — pushed to the right, near bottom */}
+      {/* Subheadline — inline on mobile, pushed to the right on desktop */}
       <div
-        className="absolute bottom-[7vw] right-8 md:right-14 max-w-xs text-right"
+        className="mt-10 md:mt-12 px-6 md:px-12 lg:px-14 max-w-xs md:ml-auto md:text-right"
         style={{ color: "var(--muted)" }}
       >
+        <p className="text-sm font-medium tracking-wide mb-3" style={{ color: "var(--foreground)" }}>
+          Agencja SEO i marketingu z Poznania.
+        </p>
         <p className="text-sm leading-relaxed tracking-wide">
-          Butikowa agencja kreatywna, która tworzy
-          <br />
-          odważne doświadczenia cyfrowe dla
-          <br />
-          ambitnych marek.
+          Butikowa agencja kreatywna, która tworzy odważne doświadczenia cyfrowe
+          dla ambitnych marek.
         </p>
         <a
-          href="#"
-          className="inline-flex items-center gap-2 mt-5 text-xs font-medium tracking-[0.16em] uppercase transition-opacity hover:opacity-100"
-          style={{ color: "var(--accent)", opacity: 0.8 }}
+          href="/case-studies"
+          className="text-link inline-flex items-center gap-2 mt-6 text-xs font-medium tracking-[0.16em] uppercase"
         >
           Zobacz nasze projekty
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">

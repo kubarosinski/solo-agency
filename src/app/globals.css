@@ -4,7 +4,7 @@
   --background: #F4EFE6;
   --foreground: #355E58;
   --accent: #D8C7B2;
-  --muted: rgba(53, 94, 88, 0.45);
+  --muted: rgba(53, 94, 88, 0.86);
   --border: rgba(53, 94, 88, 0.14);
 }
 
@@ -29,6 +29,16 @@ body {
 * {
   box-sizing: border-box;
   cursor: none !important;
+}
+
+/* Ekrany dotykowe: brak myszy, więc własny kursor tylko przeszkadza */
+@media (pointer: coarse) {
+  * {
+    cursor: auto !important;
+  }
+  .custom-cursor {
+    display: none;
+  }
 }
 
 ::selection {
@@ -92,3 +102,104 @@ body {
   border-color: var(--foreground) !important;
 }
 
+
+/* Case studies accordion */
+.accordion-trigger {
+  transition: background 0.2s ease;
+}
+.accordion-trigger:focus-visible {
+  outline: 2px solid var(--foreground);
+  outline-offset: 4px;
+}
+@media (hover: hover) {
+  .accordion-trigger:hover {
+    background: rgba(216, 199, 178, 0.18);
+  }
+}
+.accordion-icon {
+  color: var(--foreground);
+  transition: transform 0.35s ease;
+}
+.accordion-icon-v {
+  transition: transform 0.35s ease;
+}
+.accordion-icon[data-open="true"] {
+  transform: rotate(180deg);
+}
+.accordion-icon[data-open="true"] .accordion-icon-v {
+  transform: scaleY(0);
+}
+.accordion-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s ease;
+}
+.accordion-panel[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+@media (prefers-reduced-motion: reduce) {
+  .accordion-trigger,
+  .accordion-icon,
+  .accordion-icon-v,
+  .accordion-panel {
+    transition: none;
+  }
+}
+.accordion-cta {
+  color: var(--foreground);
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border);
+  transition: border-color 0.2s ease;
+}
+.accordion-cta-arrow {
+  transition: transform 0.35s ease;
+}
+.accordion-cta-arrow[data-open="true"] {
+  transform: rotate(180deg);
+}
+@media (hover: hover) {
+  .accordion-trigger:hover .accordion-cta {
+    border-color: var(--foreground);
+  }
+  .accordion-trigger:hover .accordion-cta-arrow[data-open="false"] {
+    transform: translateY(2px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .accordion-cta,
+  .accordion-cta-arrow {
+    transition: none;
+  }
+}
+
+/* Text link on light bg (home: realizacje) */
+.text-link {
+  color: var(--foreground);
+  text-decoration: none;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border);
+  transition: border-color 0.2s ease;
+}
+.text-link svg {
+  transition: transform 0.2s ease;
+}
+.text-link:hover {
+  border-color: var(--foreground);
+}
+.text-link:hover svg {
+  transform: translateX(2px);
+}
+.text-link:focus-visible {
+  outline: 2px solid var(--foreground);
+  outline-offset: 4px;
+}
+
+/* Widoczny fokus klawiatury dla wszystkich interaktywnych elementów */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+  border-radius: 1px;
+}

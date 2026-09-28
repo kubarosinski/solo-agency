@@ -64,6 +64,7 @@ export default function Cursor() {
       <div
         ref={dotRef}
         aria-hidden="true"
+        className="custom-cursor"
         style={{
           position: "fixed",
           top: 0,
@@ -87,6 +88,7 @@ export default function Cursor() {
       <div
         ref={ringRef}
         aria-hidden="true"
+        className="custom-cursor"
         style={{
           position: "fixed",
           top: 0,

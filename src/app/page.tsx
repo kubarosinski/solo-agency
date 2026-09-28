@@ -1,8 +1,27 @@
+import type { Metadata } from "next";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import Stats from "./components/Stats";
 import Statement from "./components/Statement";
 import Process from "./components/Process";
+import CaseTeasers from "./components/CaseTeasers";
 import Services from "./components/Services";
+
+const title = "Agencja SEO Poznań — Solo Agency";
+const description =
+  "Agencja SEO i marketingu z Poznania. Butikowa agencja kreatywna, która tworzy odważne doświadczenia cyfrowe dla ambitnych marek.";
+
+export const metadata: Metadata = {
+  title,
+  description,
+  openGraph: {
+    title,
+    description,
+    siteName: "Solo Agency",
+    locale: "pl_PL",
+    type: "website",
+  },
+};
 
 export default function Home() {
   return (
@@ -10,8 +29,10 @@ export default function Home() {
       <Header />
       <main className="flex flex-col w-full">
         <Hero />
+        <Stats />
         <Statement />
         <Process />
+        <CaseTeasers />
         <Services />
 
         {/* CTA */}

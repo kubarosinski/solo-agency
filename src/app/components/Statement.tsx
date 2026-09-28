@@ -8,7 +8,7 @@ export default function Statement() {
       <div className="flex items-center gap-4 mb-14">
         <span
           className="text-[10px] tracking-[0.24em] uppercase font-medium"
-          style={{ color: "rgba(244, 239, 230, 0.5)" }}
+          style={{ color: "rgba(244, 239, 230, 0.78)" }}
         >
           W co wierzymy
         </span>

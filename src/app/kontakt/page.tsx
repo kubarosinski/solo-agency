@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Header from "../components/Header";
 import ContactForm from "../components/ContactForm";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Kontakt — Solo Agency",
@@ -50,7 +51,7 @@ export default function KontaktPage() {
               <div className="flex flex-col gap-6">
                 <span
                   className="text-[11px] tracking-[0.22em] uppercase font-medium"
-                  style={{ color: "rgba(244,239,230,0.55)" }}
+                  style={{ color: "rgba(244, 239, 230, 0.78)" }}
                 >
                   Napisz do nas
                 </span>
@@ -62,7 +63,7 @@ export default function KontaktPage() {
                 </h2>
                 <p
                   className="leading-relaxed"
-                  style={{ maxWidth: "300px", color: "rgba(244,239,230,0.75)" }}
+                  style={{ maxWidth: "300px", color: "rgba(244, 239, 230, 0.85)" }}
                 >
                   Opowiedz nam o swoim projekcie, a my wrócimy do Ciebie w ciągu 24 godzin z konkretnymi propozycjami.
                 </p>
@@ -71,7 +72,7 @@ export default function KontaktPage() {
                 <div className="flex flex-col gap-2">
                   <span
                     className="text-[11px] tracking-[0.22em] uppercase font-medium"
-                    style={{ color: "rgba(244,239,230,0.55)" }}
+                    style={{ color: "rgba(244, 239, 230, 0.78)" }}
                   >
                     E-mail
                   </span>
@@ -91,7 +92,7 @@ export default function KontaktPage() {
                 <div className="flex flex-col gap-2">
                   <span
                     className="text-[11px] tracking-[0.22em] uppercase font-medium"
-                    style={{ color: "rgba(244,239,230,0.55)" }}
+                    style={{ color: "rgba(244, 239, 230, 0.78)" }}
                   >
                     Telefon
                   </span>
@@ -125,9 +126,9 @@ export default function KontaktPage() {
         >
           © 2026 Solo Agency
         </span>
-        <a href="/" className="text-[10px] tracking-[0.18em] uppercase font-medium nav-link">
+        <Link href="/" className="text-[10px] tracking-[0.18em] uppercase font-medium nav-link">
           Strona główna
-        </a>
+        </Link>
       </footer>
     </>
   );
