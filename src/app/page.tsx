@@ -61,12 +61,11 @@ export default function Home() {
           style={{ background: "#355E58" }}
         >
           <p
-            className="font-semibold leading-tight"
+            className="font-semibold leading-tight md:max-w-[60%]"
             style={{
               fontSize: "clamp(2rem, 5vw, 5rem)",
               color: "#F4EFE6",
               letterSpacing: "-0.025em",
-              maxWidth: "60%",
             }}
           >
             Porozmawiajmy<br />o Twoim projekcie
@@ -86,7 +85,7 @@ export default function Home() {
 
       {/* Minimal footer */}
       <footer
-        className="w-full flex items-center justify-between px-6 md:px-14 py-8"
+        className="w-full flex flex-wrap items-center justify-between gap-x-6 gap-y-2 px-6 md:px-14 py-8"
         style={{ borderTop: "1px solid var(--border)" }}
       >
         <span

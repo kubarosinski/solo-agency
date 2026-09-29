@@ -7,9 +7,8 @@ export default function Hero() {
       {/* Massive headline */}
       <div className="px-6 md:px-12 lg:px-14">
         <h1
-          className="font-semibold leading-[0.88] tracking-tight"
+          className="font-semibold leading-[0.88] tracking-tight text-[clamp(2.5rem,12vw,14rem)] md:text-[clamp(2.75rem,13vw,14rem)]"
           style={{
-            fontSize: "clamp(2.75rem, 13vw, 14rem)",
             color: "var(--foreground)",
             letterSpacing: "-0.03em",
           }}
@@ -45,7 +44,7 @@ export default function Hero() {
 
       {/* Thin bottom border line */}
       <div
-        className="absolute bottom-0 left-8 md:left-14 right-8 md:right-14"
+        className="absolute bottom-0 left-6 md:left-14 right-6 md:right-14"
         style={{ height: "1px", background: "var(--border)" }}
       />
     </section>

@@ -96,8 +96,8 @@ export default function ONasPage() {
             Kim jesteśmy
           </p>
           <h1
-            className="font-semibold leading-[0.9] tracking-tight"
-            style={{ fontSize: "clamp(3.5rem, 10vw, 10rem)", color: "var(--foreground)", letterSpacing: "-0.03em", maxWidth: "80%" }}
+            className="font-semibold leading-[0.9] tracking-tight md:max-w-[80%]"
+            style={{ fontSize: "clamp(2.5rem, 10vw, 10rem)", color: "var(--foreground)", letterSpacing: "-0.03em" }}
           >
             Solo Agency
           </h1>
@@ -285,7 +285,7 @@ export default function ONasPage() {
           className="w-full py-24 md:py-32 px-6 md:px-14 flex flex-col md:flex-row items-start md:items-end justify-between gap-10"
           style={{ background: "#355E58" }}
         >
-          <p className="font-semibold leading-tight" style={{ fontSize: "clamp(2rem, 5vw, 5rem)", color: "#F4EFE6", letterSpacing: "-0.025em", maxWidth: "60%" }}>
+          <p className="font-semibold leading-tight md:max-w-[60%]" style={{ fontSize: "clamp(2rem, 5vw, 5rem)", color: "#F4EFE6", letterSpacing: "-0.025em" }}>
             Porozmawiajmy<br />o rozwoju<br />Twojej marki
           </p>
           <a

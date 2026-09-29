@@ -25,7 +25,7 @@ export default function NotFound() {
           <h1
             className="font-semibold leading-[0.9] tracking-tight"
             style={{
-              fontSize: "clamp(3.5rem, 10vw, 10rem)",
+              fontSize: "clamp(2.5rem, 10vw, 10rem)",
               color: "var(--foreground)",
               letterSpacing: "-0.03em",
             }}

@@ -26,12 +26,11 @@ export default function ServicePage({ title, subtitle, description, points }: Se
             Kompetencje — {subtitle}
           </p>
           <h1
-            className="font-semibold leading-[0.9] tracking-tight"
+            className="font-semibold leading-[0.9] tracking-tight md:max-w-[80%]"
             style={{
-              fontSize: "clamp(3.5rem, 10vw, 10rem)",
+              fontSize: "clamp(2.5rem, 10vw, 10rem)",
               color: "var(--foreground)",
               letterSpacing: "-0.03em",
-              maxWidth: "80%",
             }}
           >
             {title}
@@ -105,12 +104,11 @@ export default function ServicePage({ title, subtitle, description, points }: Se
           style={{ background: "#355E58" }}
         >
           <p
-            className="font-semibold leading-tight"
+            className="font-semibold leading-tight md:max-w-[60%]"
             style={{
               fontSize: "clamp(2rem, 5vw, 5rem)",
               color: "#F4EFE6",
               letterSpacing: "-0.025em",
-              maxWidth: "60%",
             }}
           >
             Gotowy na współpracę?

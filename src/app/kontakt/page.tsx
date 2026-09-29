@@ -57,7 +57,7 @@ export default function KontaktPage() {
           <h1
             className="font-semibold leading-[0.9] tracking-tight"
             style={{
-              fontSize: "clamp(3.5rem, 10vw, 10rem)",
+              fontSize: "clamp(2.5rem, 10vw, 10rem)",
               color: "var(--foreground)",
               letterSpacing: "-0.03em",
             }}
@@ -74,7 +74,7 @@ export default function KontaktPage() {
           >
             {/* Lewa kolumna — dane kontaktowe */}
             <div
-              className="flex flex-col justify-between gap-16 p-10 md:p-14"
+              className="flex flex-col justify-between gap-16 p-6 sm:p-10 md:p-14"
               style={{ background: "#355E58", color: "#F4EFE6" }}
             >
               <div className="flex flex-col gap-6">
@@ -150,7 +150,7 @@ export default function KontaktPage() {
             </div>
 
             {/* Prawa kolumna — formularz */}
-            <div className="p-10 md:p-14" style={{ border: "1px solid var(--border)", borderLeft: "none" }}>
+            <div className="p-6 sm:p-10 md:p-14 border border-border border-t-0 md:border-t md:border-l-0">
               <ContactForm />
             </div>
           </div>

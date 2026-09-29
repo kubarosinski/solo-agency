@@ -98,7 +98,7 @@ export default function Services() {
                 <a
                   key={svc.href}
                   href={svc.href}
-                  className="service-pill group inline-flex items-center gap-3 px-5 py-2.5"
+                  className="service-pill group inline-flex items-center gap-3 px-5 py-3.5 md:py-2.5"
                   style={{
                     border: "none",
                     color: "#F4EFE6",

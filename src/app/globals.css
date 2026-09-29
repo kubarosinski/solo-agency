@@ -31,6 +31,11 @@ body {
   cursor: none !important;
 }
 
+/* Długie słowa (adresy e-mail, nazwy) łamią się zamiast wychodzić poza ekran */
+h1, h2, h3, h4, p, li, dd, a, label {
+  overflow-wrap: break-word;
+}
+
 /* Ekrany dotykowe: brak myszy, więc własny kursor tylko przeszkadza */
 @media (pointer: coarse) {
   * {
@@ -38,6 +43,20 @@ body {
   }
   .custom-cursor {
     display: none;
+  }
+
+  /* Obszar dotyku min. 44px wysokości bez zmiany układu (niewidoczny pseudo-element) */
+  :where(a[href], button) {
+    position: relative;
+  }
+  :where(a[href], button)::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: max(100%, 44px);
+    transform: translateY(-50%);
   }
 }
 
