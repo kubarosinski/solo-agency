@@ -52,12 +52,7 @@ export default function Process() {
         {steps.map((step) => (
           <li key={step.number}>
             {/* Row layout: number | title | description */}
-            <div
-              className="grid items-start py-7 md:py-9 gap-6"
-              style={{
-                gridTemplateColumns: "4rem 1fr 1fr",
-              }}
-            >
+            <div className="grid items-start py-7 md:py-9 gap-x-6 gap-y-3 md:gap-6 grid-cols-[2.5rem_1fr] md:grid-cols-[4rem_1fr_1fr]">
               {/* Number */}
               <span
                 className="font-semibold tabular-nums leading-tight"
@@ -85,7 +80,7 @@ export default function Process() {
 
               {/* Description — pushed to the right */}
               <p
-                className="text-sm leading-relaxed text-right ml-auto max-w-xs"
+                className="col-start-2 md:col-start-auto text-sm leading-relaxed md:text-right md:ml-auto max-w-xs"
                 style={{ color: "var(--muted)" }}
               >
                 {step.description}

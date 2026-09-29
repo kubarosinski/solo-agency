@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import ContactForm from "../components/ContactForm";
 import Link from "next/link";
 import JsonLd from "../components/JsonLd";
+import LegalLinks from "../components/LegalLinks";
 
 const title = "Kontakt — Solo Agency";
 const description = "Skontaktuj się z nami i porozmawiajmy o Twoim projekcie.";
@@ -57,7 +58,7 @@ export default function KontaktPage() {
           <h1
             className="font-semibold leading-[0.9] tracking-tight"
             style={{
-              fontSize: "clamp(3.5rem, 10vw, 10rem)",
+              fontSize: "clamp(2.5rem, 10vw, 10rem)",
               color: "var(--foreground)",
               letterSpacing: "-0.03em",
             }}
@@ -74,7 +75,7 @@ export default function KontaktPage() {
           >
             {/* Lewa kolumna — dane kontaktowe */}
             <div
-              className="flex flex-col justify-between gap-16 p-10 md:p-14"
+              className="flex flex-col justify-between gap-16 p-6 sm:p-10 md:p-14"
               style={{ background: "#355E58", color: "#F4EFE6" }}
             >
               <div className="flex flex-col gap-6">
@@ -150,7 +151,7 @@ export default function KontaktPage() {
             </div>
 
             {/* Prawa kolumna — formularz */}
-            <div className="p-10 md:p-14" style={{ border: "1px solid var(--border)", borderLeft: "none" }}>
+            <div className="p-6 sm:p-10 md:p-14 border border-border border-t-0 md:border-t md:border-l-0">
               <ContactForm />
             </div>
           </div>
@@ -159,7 +160,7 @@ export default function KontaktPage() {
       </main>
 
       <footer
-        className="w-full flex items-center justify-between px-6 md:px-14 py-8"
+        className="w-full flex flex-col items-start gap-4 md:flex-row md:flex-wrap md:items-center md:justify-between md:gap-x-8 px-6 md:px-14 py-8"
         style={{ borderTop: "1px solid var(--border)" }}
       >
         <span
@@ -168,6 +169,7 @@ export default function KontaktPage() {
         >
           © 2026 Solo Agency
         </span>
+        <LegalLinks />
         <Link href="/" className="text-[10px] tracking-[0.18em] uppercase font-medium nav-link">
           Strona główna
         </Link>

@@ -214,7 +214,7 @@ export default function Nav() {
         <Link
           href="/o-nas"
           onClick={closeMenu}
-          className="nav-link flex items-center px-8 text-xs font-medium uppercase"
+          className="nav-link flex items-center px-6 text-xs font-medium uppercase"
           style={{ letterSpacing: "0.15em", minHeight: "56px", borderBottom: "1px solid var(--border)" }}
         >
           O nas
@@ -225,7 +225,7 @@ export default function Nav() {
           onClick={() => setSubOpen((v) => !v)}
           aria-expanded={subOpen}
           aria-controls="mobile-submenu"
-          className="nav-link flex items-center justify-between w-full px-8 text-xs font-medium uppercase bg-transparent border-none"
+          className="nav-link flex items-center justify-between w-full px-6 text-xs font-medium uppercase bg-transparent border-none"
           style={{ letterSpacing: "0.15em", minHeight: "56px", borderBottom: "1px solid var(--border)", font: "inherit" }}
         >
           Kompetencje
@@ -251,8 +251,8 @@ export default function Nav() {
               <Link
                 href={item.href}
                 onClick={closeMenu}
-                className="nav-link flex items-center pl-12 pr-8 text-xs font-medium uppercase"
-                style={{ letterSpacing: "0.13em", minHeight: "52px", borderBottom: "1px solid var(--border)" }}
+                className="nav-link flex items-center pl-10 pr-6 text-xs font-medium uppercase"
+                style={{ letterSpacing: "0.13em", minHeight: "52px", borderBottom: "1px solid var(--border)", color: "var(--foreground)" }}
               >
                 {item.label}
               </Link>
@@ -263,7 +263,7 @@ export default function Nav() {
         <Link
           href="/kontakt"
           onClick={closeMenu}
-          className="nav-link flex items-center px-8 text-xs font-medium uppercase"
+          className="nav-link flex items-center px-6 text-xs font-medium uppercase"
           style={{ letterSpacing: "0.15em", minHeight: "56px" }}
         >
           Kontakt

@@ -4,6 +4,7 @@ import AccordionItem from "../components/AccordionItem";
 import { cases, type CaseStudy, type Paragraph } from "./cases";
 import Link from "next/link";
 import JsonLd from "../components/JsonLd";
+import LegalLinks from "../components/LegalLinks";
 
 const title = "Case Studies — Solo Agency";
 const description = "Projekty, które zrealizowaliśmy — strategie, wyniki i wnioski.";
@@ -211,7 +212,7 @@ export default function CaseStudiesPage() {
           <h1
             className="font-semibold leading-[0.9] tracking-tight"
             style={{
-              fontSize: "clamp(3.5rem, 10vw, 10rem)",
+              fontSize: "clamp(2.5rem, 10vw, 10rem)",
               color: "var(--foreground)",
               letterSpacing: "-0.03em",
             }}
@@ -241,8 +242,8 @@ export default function CaseStudiesPage() {
           style={{ background: "#355E58" }}
         >
           <p
-            className="font-semibold leading-tight"
-            style={{ fontSize: "clamp(2rem, 5vw, 5rem)", color: "#F4EFE6", letterSpacing: "-0.025em", maxWidth: "60%" }}
+            className="font-semibold leading-tight md:max-w-[60%]"
+            style={{ fontSize: "clamp(2rem, 5vw, 5rem)", color: "#F4EFE6", letterSpacing: "-0.025em" }}
           >
             Twój projekt może być następny.
           </p>
@@ -260,12 +261,13 @@ export default function CaseStudiesPage() {
       </main>
 
       <footer
-        className="w-full flex items-center justify-between px-6 md:px-14 py-8"
+        className="w-full flex flex-col items-start gap-4 md:flex-row md:flex-wrap md:items-center md:justify-between md:gap-x-8 px-6 md:px-14 py-8"
         style={{ borderTop: "1px solid var(--border)" }}
       >
         <span className="text-[10px] tracking-[0.18em] uppercase font-medium" style={{ color: "var(--muted)" }}>
           © 2026 Solo Agency
         </span>
+        <LegalLinks />
         <Link href="/" className="text-[10px] tracking-[0.18em] uppercase font-medium nav-link">
           Strona główna
         </Link>

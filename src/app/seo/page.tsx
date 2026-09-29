@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Header from "../components/Header";
 import Link from "next/link";
 import JsonLd from "../components/JsonLd";
+import LegalLinks from "../components/LegalLinks";
 
 const title = "SEO — Solo Agency";
 const description =
@@ -96,12 +97,11 @@ export default function SeoPage() {
             Kompetencje — SEO
           </p>
           <h1
-            className="font-semibold leading-[0.9] tracking-tight"
+            className="font-semibold leading-[0.9] tracking-tight md:max-w-[85%]"
             style={{
-              fontSize: "clamp(3.5rem, 10vw, 10rem)",
+              fontSize: "clamp(2.5rem, 10vw, 10rem)",
               color: "var(--foreground)",
               letterSpacing: "-0.03em",
-              maxWidth: "85%",
             }}
           >
             SEO
@@ -229,12 +229,11 @@ export default function SeoPage() {
           style={{ background: "#355E58" }}
         >
           <p
-            className="font-semibold leading-tight"
+            className="font-semibold leading-tight md:max-w-[60%]"
             style={{
               fontSize: "clamp(2rem, 5vw, 5rem)",
               color: "#F4EFE6",
               letterSpacing: "-0.025em",
-              maxWidth: "60%",
             }}
           >
             Porozmawiajmy<br />o widoczności<br />Twojej marki
@@ -260,7 +259,7 @@ export default function SeoPage() {
       </main>
 
       <footer
-        className="w-full flex items-center justify-between px-6 md:px-14 py-8"
+        className="w-full flex flex-col items-start gap-4 md:flex-row md:flex-wrap md:items-center md:justify-between md:gap-x-8 px-6 md:px-14 py-8"
         style={{ borderTop: "1px solid var(--border)" }}
       >
         <span
@@ -269,6 +268,7 @@ export default function SeoPage() {
         >
           © 2026 Solo Agency
         </span>
+        <LegalLinks />
         <Link
           href="/"
           className="text-[10px] tracking-[0.18em] uppercase font-medium nav-link"
