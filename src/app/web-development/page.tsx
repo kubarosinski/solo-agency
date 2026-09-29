@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Header from "../components/Header";
 import Link from "next/link";
 import JsonLd from "../components/JsonLd";
+import LegalLinks from "../components/LegalLinks";
 
 const title = "Web Development — Solo Agency";
 const description =
@@ -396,7 +397,7 @@ export default function WebDevelopmentPage() {
       </main>
 
       <footer
-        className="w-full flex items-center justify-between px-6 md:px-14 py-8"
+        className="w-full flex flex-col items-start gap-4 md:flex-row md:flex-wrap md:items-center md:justify-between md:gap-x-8 px-6 md:px-14 py-8"
         style={{ borderTop: "1px solid var(--border)" }}
       >
         <span
@@ -405,6 +406,7 @@ export default function WebDevelopmentPage() {
         >
           © 2026 Solo Agency
         </span>
+        <LegalLinks />
         <Link
           href="/"
           className="text-[10px] tracking-[0.18em] uppercase font-medium nav-link"

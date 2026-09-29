@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import ContactForm from "../components/ContactForm";
 import Link from "next/link";
 import JsonLd from "../components/JsonLd";
+import LegalLinks from "../components/LegalLinks";
 
 const title = "Kontakt — Solo Agency";
 const description = "Skontaktuj się z nami i porozmawiajmy o Twoim projekcie.";
@@ -159,7 +160,7 @@ export default function KontaktPage() {
       </main>
 
       <footer
-        className="w-full flex items-center justify-between px-6 md:px-14 py-8"
+        className="w-full flex flex-col items-start gap-4 md:flex-row md:flex-wrap md:items-center md:justify-between md:gap-x-8 px-6 md:px-14 py-8"
         style={{ borderTop: "1px solid var(--border)" }}
       >
         <span
@@ -168,6 +169,7 @@ export default function KontaktPage() {
         >
           © 2026 Solo Agency
         </span>
+        <LegalLinks />
         <Link href="/" className="text-[10px] tracking-[0.18em] uppercase font-medium nav-link">
           Strona główna
         </Link>
