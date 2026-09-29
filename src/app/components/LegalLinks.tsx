@@ -1,4 +1,5 @@
 import Link from "next/link";
+import CookieSettingsButton from "./CookieSettingsButton";
 
 export default function LegalLinks() {
   return (
@@ -13,6 +14,9 @@ export default function LegalLinks() {
           <Link href="/polityka-prywatnosci" className="text-[10px] tracking-[0.18em] uppercase font-medium nav-link">
             Polityka prywatności
           </Link>
+        </li>
+        <li>
+          <CookieSettingsButton />
         </li>
       </ul>
     </nav>

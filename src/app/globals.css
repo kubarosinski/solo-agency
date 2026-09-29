@@ -260,3 +260,138 @@ textarea:focus-visible {
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
 }
+
+/* Okno zgód cookies (natywny <dialog> otwierany przez showModal) */
+.cookie-consent {
+  --consent-pad: 32px;
+  width: min(620px, calc(100% - 32px));
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+  margin: auto;
+  padding: var(--consent-pad);
+  background: var(--background);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  box-shadow: 0 24px 80px rgba(20, 38, 35, 0.28);
+  overscroll-behavior: contain;
+  /* element z fokusem nie może chować się pod przyklejonym paskiem przycisków */
+  scroll-padding-bottom: 200px;
+}
+@media (max-width: 480px) {
+  .cookie-consent {
+    --consent-pad: 24px;
+    scroll-padding-bottom: 170px;
+  }
+}
+/* Przyciski decyzji przyklejone do dołu okna — widoczne także po rozwinięciu kategorii */
+.consent-actions {
+  position: sticky;
+  bottom: calc(-1 * var(--consent-pad));
+  margin: 0 calc(-1 * var(--consent-pad)) calc(-1 * var(--consent-pad));
+  padding: 16px var(--consent-pad) var(--consent-pad);
+  background: var(--background);
+}
+.cookie-consent::backdrop {
+  background: rgba(20, 38, 35, 0.55);
+  cursor: auto;
+}
+/* Dialog leży w warstwie nad własnym kursorem strony — pokaż kursor systemowy */
+html:has(.cookie-consent[open]) .custom-cursor {
+  display: none;
+}
+.cookie-consent,
+.cookie-consent * {
+  cursor: auto !important;
+}
+.cookie-consent :is(button, a, label, input:not(:disabled)) {
+  cursor: pointer !important;
+}
+.consent-link {
+  color: var(--foreground);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.consent-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 24px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--foreground);
+  background: transparent;
+  border: 1px solid var(--foreground);
+  border-radius: 2px;
+  text-align: center;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.consent-btn--primary {
+  background: var(--foreground);
+  color: #F4EFE6;
+}
+@media (hover: hover) {
+  .consent-btn:hover {
+    background: rgba(53, 94, 88, 0.08);
+  }
+  .consent-btn--primary:hover {
+    background: #26473f;
+  }
+}
+
+.consent-switch {
+  appearance: none;
+  flex-shrink: 0;
+  position: relative;
+  width: 44px;
+  height: 26px;
+  margin: 0;
+  border: 1.5px solid var(--foreground);
+  border-radius: 13px;
+  background: transparent;
+  transition: background 0.2s ease;
+}
+.consent-switch::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: var(--foreground);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+/* obszar dotyku 44x44 wokół przełącznika 44x26 */
+.consent-switch::after {
+  content: "";
+  position: absolute;
+  inset: -10px -1.5px;
+}
+.consent-switch:checked {
+  background: var(--foreground);
+}
+.consent-switch:checked::before {
+  background: #F4EFE6;
+  transform: translateX(18px);
+}
+.consent-switch:disabled {
+  opacity: 0.6;
+}
+@media (prefers-reduced-motion: reduce) {
+  .consent-btn,
+  .consent-switch,
+  .consent-switch::before {
+    transition: none;
+  }
+}
+@media (max-width: 480px) {
+  .consent-btn {
+    padding: 0 12px;
+    letter-spacing: 0.08em;
+  }
+}

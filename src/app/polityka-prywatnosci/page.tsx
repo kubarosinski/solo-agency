@@ -3,16 +3,16 @@
  * Nie jest to gotowy dokument prawny. Przed wdrożeniem:
  * - uzupełnij wszystkie pola w nawiasach kwadratowych ([NAZWA FIRMY], [ADRES], [NIP] itd.),
  * - daj treść do sprawdzenia prawnikowi lub inspektorowi ochrony danych,
- * - zaktualizuj sekcję "Pliki cookies" po dodaniu jakiegokolwiek narzędzia analitycznego
- *   lub marketingowego (wtedy także baner cookies musi dostać wybór Akceptuję/Odrzuć).
+ * - po dodaniu narzędzia analitycznego lub marketingowego wpisz je w sekcji "Pliki cookies"
+ *   i ładuj jego skrypt dopiero po zgodzie (useCookieConsent z components/CookieConsent.tsx).
  * Stan na dzień przygotowania szablonu: serwis nie ładuje skryptów analitycznych ani
- * marketingowych i nie ustawia plików cookies; baner zapisuje tylko wpis w localStorage.
+ * marketingowych i nie ustawia plików cookies; okno zgód zapisuje wybór w localStorage.
  */
 import type { Metadata } from "next";
 import Link from "next/link";
 import LegalPage, { type LegalSection } from "../components/LegalPage";
 import JsonLd from "../components/JsonLd";
-import { COOKIE_NOTICE_KEY } from "../components/cookie-notice-key";
+import { COOKIE_CONSENT_KEY } from "../components/cookie-consent";
 
 const title = "Polityka prywatności — Solo Agency";
 const description =
@@ -200,16 +200,31 @@ const sections: LegalSection[] = [
           więc Twoja przeglądarka nie łączy się w tym celu z zewnętrznymi dostawcami.
         </p>
         <p>
-          Serwis zapisuje w pamięci przeglądarki jeden niezbędny wpis ({COOKIE_NOTICE_KEY}). Zawiera on
-          informację, że zamknięto komunikat o plikach cookies, oraz datę zamknięcia, dzięki czemu
-          komunikat nie wyświetla się przy kolejnych wizytach. Wpis nie zawiera danych osobowych i nie jest
-          wysyłany na serwer. Możesz go usunąć, czyszcząc dane witryny w ustawieniach przeglądarki. Wtedy
-          komunikat pojawi się ponownie.
+          Przy pierwszej wizycie wyświetlamy okno, w którym decydujesz o plikach cookies. Wyróżniamy trzy
+          kategorie:
         </p>
+        <ul>
+          <li>
+            <strong>Niezbędne</strong> — zapewniają działanie strony i zapamiętują Twoją decyzję. Nie wymagają
+            zgody i nie można ich wyłączyć. Obecnie jest to jeden wpis w pamięci przeglądarki
+            ({COOKIE_CONSENT_KEY}) z Twoim wyborem i datą decyzji. Nie zawiera danych osobowych i nie jest
+            wysyłany na serwer.
+          </li>
+          <li>
+            <strong>Analityczne</strong> — służą do mierzenia ruchu i sposobu korzystania ze strony. Używamy ich
+            wyłącznie za Twoją zgodą. [NARZĘDZIA ANALITYCZNE: NAZWA, DOSTAWCA, CEL, CZAS PRZECHOWYWANIA —
+            OBECNIE SERWIS NIE UŻYWA ŻADNYCH.]
+          </li>
+          <li>
+            <strong>Marketingowe</strong> — służą do mierzenia skuteczności reklam i ich dopasowania. Używamy ich
+            wyłącznie za Twoją zgodą. [NARZĘDZIA MARKETINGOWE: NAZWA, DOSTAWCA, CEL, CZAS PRZECHOWYWANIA —
+            OBECNIE SERWIS NIE UŻYWA ŻADNYCH.]
+          </li>
+        </ul>
         <p>
-          [JEŚLI W PRZYSZŁOŚCI ZOSTANĄ DODANE NARZĘDZIA ANALITYCZNE LUB MARKETINGOWE: WYMIEŃ KAŻDE Z NICH
-          (NAZWA, DOSTAWCA, CEL, CZAS PRZECHOWYWANIA COOKIES), PODZIELONE NA KATEGORIE: NIEZBĘDNE,
-          ANALITYCZNE, MARKETINGOWE, I OPISZ, JAK WYCOFAĆ ZGODĘ.]
+          Skrypty analityczne i marketingowe mogą zostać uruchomione dopiero po udzieleniu zgody. Zgodę możesz
+          w każdej chwili zmienić lub wycofać, klikając „Ustawienia cookies” w stopce strony. Wycofanie zgody
+          nie wpływa na zgodność z prawem przetwarzania, którego dokonano przed jej wycofaniem.
         </p>
         <p>
           Obsługę plików cookies możesz w każdej chwili zmienić w ustawieniach swojej przeglądarki, w tym
