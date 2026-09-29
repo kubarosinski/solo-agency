@@ -1,0 +1,80 @@
+# ============================================================
+#  Solo Agency — Apache/.htaccess
+#  • http  → https
+#  • www   → bez www
+#  • Clean URLs dla Next.js static export (output: "export")
+# ============================================================
+
+Options -Indexes
+Options +FollowSymLinks
+
+# Wycisz błędy serwera w odpowiedziach (nie pokazuje wersji Apache)
+ServerSignature Off
+
+# ---------- mod_rewrite ----------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # 1. Wymuś HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+  # 2. Usuń www (przekieruj www → bez www)
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
+  # 3. Nie przepisuj istniejących plików/katalogów
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # 4. Clean URLs — spróbuj <ścieżka>.html, potem <ścieżka>/index.html
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.+?)/?$ $1.html [L]
+
+  RewriteCond %{REQUEST_FILENAME}/index.html -f
+  RewriteRule ^(.+?)/?$ $1/index.html [L]
+
+  # 5. Strona 404
+  RewriteRule ^ /404.html [L]
+</IfModule>
+
+# ---------- Cache-Control ----------
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # Fonty i statyczne assety Next.js (hashe w nazwie = wieczne cache)
+  <FilesMatch "\.(woff2?|ttf|otf|eot)$">
+    ExpiresDefault "access plus 1 year"
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  <FilesMatch "\.(js|css)$">
+    ExpiresDefault "access plus 1 year"
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  <FilesMatch "\.(jpg|jpeg|png|gif|svg|webp|avif|ico)$">
+    ExpiresDefault "access plus 1 year"
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # HTML — zawsze odświeżaj
+  <FilesMatch "\.html$">
+    ExpiresDefault "access plus 0 seconds"
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# ---------- Kompresja ----------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml font/woff2
+</IfModule>
+
+# ---------- Bezpieczeństwo ----------
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

@@ -6,17 +6,24 @@ import Cursor from "./components/Cursor";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
+// preload: false — font monospace nie jest używany w critical path (above the fold),
+// więc nie potrzebuje preloadu; eliminuje ostrzeżenie "preloaded but not used".
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
+  preload: false,
 });
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
   weight: ["400", "700"],
+  display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
