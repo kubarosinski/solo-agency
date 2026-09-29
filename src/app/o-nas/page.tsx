@@ -2,11 +2,29 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Header from "../components/Header";
 import Link from "next/link";
+import JsonLd from "../components/JsonLd";
+
+const title = "O nas — Solo Agency";
+const description =
+  "Łączymy strategię, kreację i technologię. Pracujemy z markami, które mają ambicje i cenią jakość ponad ilość.";
 
 export const metadata: Metadata = {
-  title: "O nas — Solo Agency",
-  description:
-    "Łączymy strategię, kreację i technologię. Pracujemy z markami, które mają ambicje i cenią jakość ponad ilość.",
+  title,
+  description,
+  robots: { index: true, follow: true },
+  openGraph: {
+    title,
+    description,
+    url: "https://www.soloagency.pl/o-nas",
+    siteName: "Solo Agency",
+    locale: "pl_PL",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
 };
 
 const team = [
@@ -52,9 +70,20 @@ const values = [
   },
 ];
 
+const schemaAboutPage = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: title,
+  description,
+  url: "https://www.soloagency.pl/o-nas",
+  isPartOf: { "@id": "https://www.soloagency.pl/#organization" },
+  inLanguage: "pl",
+};
+
 export default function ONasPage() {
   return (
     <>
+      <JsonLd data={schemaAboutPage} />
       <Header />
       <main className="flex flex-col w-full">
 

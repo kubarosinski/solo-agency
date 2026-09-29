@@ -1,11 +1,29 @@
 import type { Metadata } from "next";
 import Header from "../components/Header";
 import Link from "next/link";
+import JsonLd from "../components/JsonLd";
+
+const title = "Web Development — Solo Agency";
+const description =
+  "Tworzymy strony usługowe i landing page pisane od zera — spersonalizowane pod markę, zoptymalizowane pod SEO i zaprojektowane tak, żeby konwertować.";
 
 export const metadata: Metadata = {
-  title: "Web Development — Solo Agency",
-  description:
-    "Tworzymy strony usługowe i landing page pisane od zera — spersonalizowane pod markę, zoptymalizowane pod SEO i zaprojektowane tak, żeby konwertować.",
+  title,
+  description,
+  robots: { index: true, follow: true },
+  openGraph: {
+    title,
+    description,
+    url: "https://www.soloagency.pl/web-development",
+    siteName: "Solo Agency",
+    locale: "pl_PL",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
 };
 
 const advantages = [
@@ -70,9 +88,22 @@ const services = [
   "Utrzymanie, aktualizacje i wprowadzanie zmian",
 ];
 
+const schemaService = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Web Development — tworzenie stron internetowych",
+  description,
+  url: "https://www.soloagency.pl/web-development",
+  provider: { "@id": "https://www.soloagency.pl/#organization" },
+  areaServed: "PL",
+  serviceType: "Web Development",
+  inLanguage: "pl",
+};
+
 export default function WebDevelopmentPage() {
   return (
     <>
+      <JsonLd data={schemaService} />
       <Header />
       <main className="flex flex-col w-full">
 

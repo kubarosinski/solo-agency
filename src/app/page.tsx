@@ -6,6 +6,7 @@ import Statement from "./components/Statement";
 import Process from "./components/Process";
 import CaseTeasers from "./components/CaseTeasers";
 import Services from "./components/Services";
+import JsonLd from "./components/JsonLd";
 
 const title = "Agencja SEO Poznań — Solo Agency";
 const description =
@@ -14,18 +15,37 @@ const description =
 export const metadata: Metadata = {
   title,
   description,
+  robots: { index: true, follow: true },
   openGraph: {
     title,
     description,
+    url: "https://www.soloagency.pl/",
     siteName: "Solo Agency",
     locale: "pl_PL",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
+};
+
+const schemaWebPage = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://www.soloagency.pl/#webpage",
+  url: "https://www.soloagency.pl/",
+  name: title,
+  description,
+  isPartOf: { "@id": "https://www.soloagency.pl/#organization" },
+  inLanguage: "pl",
 };
 
 export default function Home() {
   return (
     <>
+      <JsonLd data={schemaWebPage} />
       <Header />
       <main className="flex flex-col w-full">
         <Hero />

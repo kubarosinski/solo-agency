@@ -2,15 +2,44 @@ import type { Metadata } from "next";
 import Header from "../components/Header";
 import ContactForm from "../components/ContactForm";
 import Link from "next/link";
+import JsonLd from "../components/JsonLd";
+
+const title = "Kontakt — Solo Agency";
+const description = "Skontaktuj się z nami i porozmawiajmy o Twoim projekcie.";
 
 export const metadata: Metadata = {
-  title: "Kontakt — Solo Agency",
-  description: "Skontaktuj się z nami i porozmawiajmy o Twoim projekcie.",
+  title,
+  description,
+  robots: { index: true, follow: true },
+  openGraph: {
+    title,
+    description,
+    url: "https://www.soloagency.pl/kontakt",
+    siteName: "Solo Agency",
+    locale: "pl_PL",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
+};
+
+const schemaContactPage = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: title,
+  description,
+  url: "https://www.soloagency.pl/kontakt",
+  isPartOf: { "@id": "https://www.soloagency.pl/#organization" },
+  inLanguage: "pl",
 };
 
 export default function KontaktPage() {
   return (
     <>
+      <JsonLd data={schemaContactPage} />
       <Header />
       <main className="flex flex-col w-full">
 
@@ -97,11 +126,24 @@ export default function KontaktPage() {
                     Telefon
                   </span>
                   <a
-                    href="tel:+48000000000"
-                    className="font-semibold"
+                    href="tel:+48512378161"
+                    className="font-semibold inline-flex items-center gap-2"
                     style={{ fontSize: "1.3rem", color: "#F4EFE6" }}
                   >
-                    +48 000 000 000
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    +48 512 378 161
+                  </a>
+                  <a
+                    href="tel:+48737132078"
+                    className="font-semibold inline-flex items-center gap-2"
+                    style={{ fontSize: "1.3rem", color: "#F4EFE6" }}
+                  >
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    +48 737 132 078
                   </a>
                 </div>
               </div>

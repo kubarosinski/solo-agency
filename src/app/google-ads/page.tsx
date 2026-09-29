@@ -1,11 +1,29 @@
 import type { Metadata } from "next";
 import Header from "../components/Header";
 import Link from "next/link";
+import JsonLd from "../components/JsonLd";
+
+const title = "Google Ads — Solo Agency";
+const description =
+  "Tworzymy i prowadzimy kampanie Google Ads, które generują realne wyniki — nie tylko kliknięcia, ale zapytania i przychody.";
 
 export const metadata: Metadata = {
-  title: "Google Ads — Solo Agency",
-  description:
-    "Tworzymy i prowadzimy kampanie Google Ads, które generują realne wyniki — nie tylko kliknięcia, ale zapytania i przychody.",
+  title,
+  description,
+  robots: { index: true, follow: true },
+  openGraph: {
+    title,
+    description,
+    url: "https://www.soloagency.pl/google-ads",
+    siteName: "Solo Agency",
+    locale: "pl_PL",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
 };
 
 const advantages = [
@@ -53,9 +71,22 @@ const pricingModels = [
   },
 ];
 
+const schemaService = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Google Ads — kampanie reklamowe",
+  description,
+  url: "https://www.soloagency.pl/google-ads",
+  provider: { "@id": "https://www.soloagency.pl/#organization" },
+  areaServed: "PL",
+  serviceType: "Pay-Per-Click Advertising",
+  inLanguage: "pl",
+};
+
 export default function GoogleAdsPage() {
   return (
     <>
+      <JsonLd data={schemaService} />
       <Header />
       <main className="flex flex-col w-full">
 

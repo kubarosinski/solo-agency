@@ -3,10 +3,28 @@ import Header from "../components/Header";
 import AccordionItem from "../components/AccordionItem";
 import { cases, type CaseStudy, type Paragraph } from "./cases";
 import Link from "next/link";
+import JsonLd from "../components/JsonLd";
+
+const title = "Case Studies — Solo Agency";
+const description = "Projekty, które zrealizowaliśmy — strategie, wyniki i wnioski.";
 
 export const metadata: Metadata = {
-  title: "Case Studies — Solo Agency",
-  description: "Projekty, które zrealizowaliśmy — strategie, wyniki i wnioski.",
+  title,
+  description,
+  robots: { index: true, follow: true },
+  openGraph: {
+    title,
+    description,
+    url: "https://www.soloagency.pl/case-studies",
+    siteName: "Solo Agency",
+    locale: "pl_PL",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
 };
 
 const labelClass = "text-[10px] tracking-[0.24em] uppercase font-medium";
@@ -163,9 +181,20 @@ function CaseBody({ c }: { c: CaseStudy }) {
   );
 }
 
+const schemaCollectionPage = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: title,
+  description,
+  url: "https://www.soloagency.pl/case-studies",
+  isPartOf: { "@id": "https://www.soloagency.pl/#organization" },
+  inLanguage: "pl",
+};
+
 export default function CaseStudiesPage() {
   return (
     <>
+      <JsonLd data={schemaCollectionPage} />
       <Header />
       <main className="flex flex-col w-full">
         {/* Hero */}

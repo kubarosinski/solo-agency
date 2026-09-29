@@ -1,11 +1,29 @@
 import type { Metadata } from "next";
 import Header from "../components/Header";
 import Link from "next/link";
+import JsonLd from "../components/JsonLd";
+
+const title = "SEO — Solo Agency";
+const description =
+  "Widoczność, która nie znika, gdy kończy się budżet reklamowy. Łączymy analizę techniczną, treści i autorytet domeny, aby Twoja marka była pierwszą odpowiedzią tam, gdzie szukają jej klienci.";
 
 export const metadata: Metadata = {
-  title: "SEO — Solo Agency",
-  description:
-    "Widoczność, która nie znika, gdy kończy się budżet reklamowy. Łączymy analizę techniczną, treści i autorytet domeny, aby Twoja marka była pierwszą odpowiedzią tam, gdzie szukają jej klienci.",
+  title,
+  description,
+  robots: { index: true, follow: true },
+  openGraph: {
+    title,
+    description,
+    url: "https://www.soloagency.pl/seo",
+    siteName: "Solo Agency",
+    locale: "pl_PL",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
 };
 
 const services = [
@@ -47,9 +65,22 @@ const services = [
   },
 ];
 
+const schemaService = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "SEO — pozycjonowanie stron",
+  description,
+  url: "https://www.soloagency.pl/seo",
+  provider: { "@id": "https://www.soloagency.pl/#organization" },
+  areaServed: "PL",
+  serviceType: "Search Engine Optimization",
+  inLanguage: "pl",
+};
+
 export default function SeoPage() {
   return (
     <>
+      <JsonLd data={schemaService} />
       <Header />
       <main className="flex flex-col w-full">
 

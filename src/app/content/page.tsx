@@ -1,11 +1,29 @@
 import type { Metadata } from "next";
 import Header from "../components/Header";
 import Link from "next/link";
+import JsonLd from "../components/JsonLd";
+
+const title = "Content Marketing — Solo Agency";
+const description =
+  "Treści, które pozycjonują, angażują i sprzedają — od strategii contentowej po gotowe materiały.";
 
 export const metadata: Metadata = {
-  title: "Content — Solo Agency",
-  description:
-    "Treści, które pozycjonują, angażują i sprzedają — od strategii contentowej po gotowe materiały.",
+  title,
+  description,
+  robots: { index: true, follow: true },
+  openGraph: {
+    title,
+    description,
+    url: "https://www.soloagency.pl/content",
+    siteName: "Solo Agency",
+    locale: "pl_PL",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
 };
 
 const services = [
@@ -47,9 +65,22 @@ const services = [
   },
 ];
 
+const schemaService = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Content Marketing",
+  description,
+  url: "https://www.soloagency.pl/content",
+  provider: { "@id": "https://www.soloagency.pl/#organization" },
+  areaServed: "PL",
+  serviceType: "Content Marketing",
+  inLanguage: "pl",
+};
+
 export default function ContentPage() {
   return (
     <>
+      <JsonLd data={schemaService} />
       <Header />
       <main className="flex flex-col w-full">
 

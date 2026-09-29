@@ -1,11 +1,29 @@
 import type { Metadata } from "next";
 import Header from "../components/Header";
 import Link from "next/link";
+import JsonLd from "../components/JsonLd";
+
+const title = "AI Search — Solo Agency";
+const description =
+  "Coraz więcej pytań kończy się gotową odpowiedzią, a nie kliknięciem w link. Pracujemy nad tym, żeby Twoja marka była wśród polecanych, zanim konkurencja to zauważy.";
 
 export const metadata: Metadata = {
-  title: "AI Search — Solo Agency",
-  description:
-    "Coraz więcej pytań kończy się gotową odpowiedzią, a nie kliknięciem w link. Pracujemy nad tym, żeby Twoja marka była wśród polecanych, zanim konkurencja to zauważy.",
+  title,
+  description,
+  robots: { index: true, follow: true },
+  openGraph: {
+    title,
+    description,
+    url: "https://www.soloagency.pl/ai-search",
+    siteName: "Solo Agency",
+    locale: "pl_PL",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
 };
 
 const services = [
@@ -47,9 +65,22 @@ const services = [
   },
 ];
 
+const schemaService = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "AI Search Optimization",
+  description,
+  url: "https://www.soloagency.pl/ai-search",
+  provider: { "@id": "https://www.soloagency.pl/#organization" },
+  areaServed: "PL",
+  serviceType: "AI Search Optimization",
+  inLanguage: "pl",
+};
+
 export default function AiSearchPage() {
   return (
     <>
+      <JsonLd data={schemaService} />
       <Header />
       <main className="flex flex-col w-full">
 

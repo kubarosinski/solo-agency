@@ -1,11 +1,29 @@
 import type { Metadata } from "next";
 import Header from "../components/Header";
 import Link from "next/link";
+import JsonLd from "../components/JsonLd";
+
+const title = "Social Media — Solo Agency";
+const description =
+  "Strategia, treści i prowadzenie kanałów, które budują markę i przekładają się na realne wyniki biznesowe.";
 
 export const metadata: Metadata = {
-  title: "Social Media — Solo Agency",
-  description:
-    "Strategia, treści i prowadzenie kanałów, które budują markę i przekładają się na realne wyniki biznesowe.",
+  title,
+  description,
+  robots: { index: true, follow: true },
+  openGraph: {
+    title,
+    description,
+    url: "https://www.soloagency.pl/social-media",
+    siteName: "Solo Agency",
+    locale: "pl_PL",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
 };
 
 const services = [
@@ -47,9 +65,22 @@ const services = [
   },
 ];
 
+const schemaService = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Social Media Marketing",
+  description,
+  url: "https://www.soloagency.pl/social-media",
+  provider: { "@id": "https://www.soloagency.pl/#organization" },
+  areaServed: "PL",
+  serviceType: "Social Media Marketing",
+  inLanguage: "pl",
+};
+
 export default function SocialMediaPage() {
   return (
     <>
+      <JsonLd data={schemaService} />
       <Header />
       <main className="flex flex-col w-full">
 

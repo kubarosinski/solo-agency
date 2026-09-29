@@ -20,8 +20,31 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.soloagency.pl"),
   title: "SOLO — Creative Agency",
   description: "A boutique creative agency building bold digital experiences for ambitious brands.",
+};
+
+const schemaLocalBusiness = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.soloagency.pl/#organization",
+  name: "Solo Agency",
+  url: "https://www.soloagency.pl",
+  logo: "https://www.soloagency.pl/solo-logo.png",
+  description:
+    "Agencja SEO i marketingu z Poznania. Butikowa agencja kreatywna, która tworzy odważne doświadczenia cyfrowe dla ambitnych marek.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Poznań",
+    addressRegion: "Wielkopolska",
+    addressCountry: "PL",
+  },
+  telephone: ["+48512378161", "+48737132078"],
+  email: "hello@soloagency.pl",
+  areaServed: "PL",
+  sameAs: [],
+  priceRange: "$$",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -30,6 +53,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="pl"
       className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} h-full antialiased`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaLocalBusiness) }}
+        />
+      </head>
       <body className="min-h-full flex flex-col">
         <Cursor />
         {children}
